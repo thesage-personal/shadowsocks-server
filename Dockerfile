@@ -8,12 +8,12 @@ ENV PORT=443 \
     OBFS_PLUGIN=v2ray-plugin \
     OBFS_OPTS="server"
 
+# Switch to root temporarily to install packages and copy files
+USER root
+
 # Create a non-root user and switch to that user
 RUN adduser -D nonrootuser
 USER nonrootuser
-
-# Switch to root temporarily to install packages and copy files
-USER root
 
 # Copy the v2ray-plugin tar file into the container
 COPY v2ray-plugin-linux-amd64-v1.3.2.tar.gz /tmp/
